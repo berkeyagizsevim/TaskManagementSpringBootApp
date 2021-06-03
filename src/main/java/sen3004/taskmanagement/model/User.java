@@ -11,7 +11,7 @@ public class User {
 	@NotEmpty
 	private String fullName; 
 	
-	@Email
+	@NotEmpty
 	private String email; 
 	
 	@NotEmpty

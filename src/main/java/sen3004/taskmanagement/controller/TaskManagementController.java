@@ -1,5 +1,6 @@
 package sen3004.taskmanagement.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 
@@ -10,11 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import sen3004.taskmanagement.model.User;
+import sen3004.taskmanagement.validator.FieldMatchValidator;
 
 
 
 @Controller
 public class TaskManagementController {
+	
+	@Autowired
+	FieldMatchValidator fm; 
 	
 	// Login Page Controller 
 
@@ -32,6 +37,9 @@ public class TaskManagementController {
 	public ModelAndView processLoginForm(@Valid @ModelAttribute("loginData") User loginData, BindingResult result) {
 		ModelAndView mv = new ModelAndView("welcome");
 		mv.addObject("loginData", loginData);
+		
+		
+		fm.validate(loginData, result);
 		
 		if(result.hasErrors()) {
 			mv.setViewName("login");
