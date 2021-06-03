@@ -33,9 +33,11 @@
 				<td><form:input path="phoneNumber"/></td>
 				<td style="width:500px"><form:errors path="phoneNumber" cssClass="error" /></td>
 			</tr>	
-			<td>Date Field:</td>
+			<tr>
+				<td>Date Field:</td>
 				<td><form:input path="dateOfBirth" /></td>
 				<td style="width:500px"><form:errors path="dateOfBirth" cssClass="error" /></td>
+			</tr>
 			<tr>
 				<td colspan="3"><input type="submit" value="Sign Up"></td>
 			</tr>
