@@ -11,7 +11,7 @@ import sen3004.taskmanagement.service.IUser;
 
 
 @Service
-public class TaskManagementService implements IUser {
+public class TaskManagementService implements IUser{
 
 	@Autowired
 	TaskManagementRepository repository;
