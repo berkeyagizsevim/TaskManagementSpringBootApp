@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
-	<h2>There is no error. Login completed.</h2>
+	<h2>Task added. There is no error overthere.</h2>
 </body>
 </html>

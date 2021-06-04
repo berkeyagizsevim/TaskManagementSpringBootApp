@@ -5,6 +5,7 @@ import java.util.Set;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -15,26 +16,28 @@ public class Task {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int taskId; 
+	private long id; 
 	
+	@NotEmpty
 	@Column(name="tasktitle")
 	private String taskTitle;
 	
+	@NotEmpty
 	@Column(name="taskdescription")
 	private String taskDescription; 
 	
 	@Column(name="taskstatus")
-	private String taskStatus;
+	private String taskStatus = "todo";
 	
 	@ManyToMany(mappedBy = "tasks")
 	
 	private Set<User> users = new HashSet<>();
 	
-	public int getTaskId() {
-		return taskId;
+	public long getId() {
+		return id;
 	}
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getTaskTitle() {
 		return taskTitle;

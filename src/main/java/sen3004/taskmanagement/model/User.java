@@ -18,7 +18,7 @@ public class User  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
 	@NotEmpty
 	@Column(name="fullname")
@@ -31,6 +31,10 @@ public class User  {
 	@NotEmpty
 	@Column(name="password")
 	private String password;
+	
+	/*@NotEmpty
+	private String confirmPassword;
+	*/
 	
 	@NotEmpty
 	@Column(name="phonenumber")
@@ -49,10 +53,20 @@ public class User  {
 	private Set<Task> tasks = new HashSet<>();
 	
 	
-	public int getId() {
+	
+	
+	/*public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}*/
+	
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

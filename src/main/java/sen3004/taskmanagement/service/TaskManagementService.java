@@ -13,7 +13,7 @@ import sen3004.taskmanagement.model.User;
 
 @Service
 @Transactional
-public class TaskManagementService {
+public class TaskManagementService{
 
 	@Autowired
 	TaskManagementUserRepository userrepository;
@@ -21,6 +21,7 @@ public class TaskManagementService {
 	@Autowired
 	TaskManagementTaskRepository taskrepository;
 	
+
 	
 	public User findUserById(long id) {
 		return userrepository.getOne(id);
@@ -36,14 +37,11 @@ public class TaskManagementService {
 	
 	public void saveTask(Task task) {
 		taskrepository.save(task);
-
 	}
 	
 	public void saveUser(User user) {
 		userrepository.save(user);
 	}
-	
-	
 	
 
 	
