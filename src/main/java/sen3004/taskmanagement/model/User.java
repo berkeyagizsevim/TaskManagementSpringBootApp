@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
 	
+	
+	private int id;
+	
 	@NotEmpty
 	private String fullName; 
 	
@@ -24,6 +27,13 @@ public class User {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dateOfBirth;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 	public String getFullName() {

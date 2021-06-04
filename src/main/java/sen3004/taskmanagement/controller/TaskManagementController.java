@@ -6,11 +6,13 @@ import org.springframework.validation.BindingResult;
 
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import sen3004.taskmanagement.model.User;
+import sen3004.taskmanagement.service.TaskManagementService;
 import sen3004.taskmanagement.validator.FieldMatchValidator;
 
 
@@ -18,8 +20,11 @@ import sen3004.taskmanagement.validator.FieldMatchValidator;
 @Controller
 public class TaskManagementController {
 	
+	//@Autowired
+	//FieldMatchValidator fm; 
+	
 	@Autowired
-	FieldMatchValidator fm; 
+	TaskManagementService service;
 	
 	// Login Page Controller 
 
@@ -38,12 +43,13 @@ public class TaskManagementController {
 		ModelAndView mv = new ModelAndView("welcome");
 		mv.addObject("loginData", loginData);
 		
-		
-		fm.validate(loginData, result);
+
 		
 		if(result.hasErrors()) {
 			mv.setViewName("login");
 		}else {
+			
+			// Check whether this data located on db or not? 
 			mv.setViewName("welcome");
 		}
 
@@ -70,10 +76,23 @@ public class TaskManagementController {
 			mv.setViewName("sign-up");
 		}else {
 			mv.setViewName("welcome");
+			service.create(signupData);
+			//mv.addObject("persons", service.findAll();)
+			//user fills form, after validation we create instance of a project.
 		}
 
 		return mv;
 	}
+	
+	@RequestMapping(value="/delete{id}", method = RequestMethod.GET)
+	public ModelAndView delete(@PathVariable int id) {
+		ModelAndView mv = new ModelAndView("person-list");
+		service.delete(id);
+		mv.addObject("persons", service.findAll());
+		return mv; 
+	}
+	
+	
 	
 
 

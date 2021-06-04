@@ -1,0 +1,5 @@
+INSERT INTO user(fullName, email, password, phoneNumber, dateOfBirth) values ('Berke Yağız Sevim', 'berkeyagizsevim@gmail.com', '123123123', '05372056935',parsedatetime('06-11-1991', 'dd-MM-yyyy'));
+INSERT INTO user(fullName, email, password, phoneNumber, dateOfBirth) values ('Berke', 'berkeyagizsevim@gmail.com', '123123123', '05372056935',parsedatetime('06-06-1993', 'dd-MM-yyyy'));
+INSERT INTO user(fullName, email, password, phoneNumber, dateOfBirth) values ('Yağız ', 'berkeyagizsevim@gmail.com', '123123123', '05372056935',parsedatetime('06-01-1999', 'dd-MM-yyyy'));
+INSERT INTO user(fullName, email, password, phoneNumber, dateOfBirth) values ('Harun ', 'berkeyagizsevim@gmail.com', '123123123', '05372056935',parsedatetime('06-01-1999', 'dd-MM-yyyy'));
+INSERT INTO user(fullName, email, password, phoneNumber, dateOfBirth) values ('Beril ', 'berkeyagizsevim@gmail.com', '123123123', '05372056935',parsedatetime('06-01-1999', 'dd-MM-yyyy'));
