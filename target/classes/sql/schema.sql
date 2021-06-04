@@ -1,6 +1,6 @@
-create table user(id identity primary key, fullName varchar(50), email varchar(50), password varchar(50), phoneNumber varchar(50), dateOfBirth date);
+create table user(id identity primary key, fullname varchar(50), email varchar(50), password varchar(50), phonenumber varchar(50), dateofbirth date);
 
-create table task(id identity primary key, taskTitle varchar(50), taskDescription varchar(50), taskStatus varchar(50));
+create table task(id identity primary key, tasktitle varchar(50), taskdescription varchar(50), taskstatus varchar(50));
 					
 create table assignedTasks(uid bigint, 
 				       tid bigint,

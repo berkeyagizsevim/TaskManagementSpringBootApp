@@ -3,42 +3,49 @@ package sen3004.taskmanagement.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import sen3004.taskmanagement.dao.TaskManagementRepository;
+import sen3004.taskmanagement.dao.TaskManagementTaskRepository;
+import sen3004.taskmanagement.dao.TaskManagementUserRepository;
+import sen3004.taskmanagement.model.Task;
 import sen3004.taskmanagement.model.User;
-import sen3004.taskmanagement.service.IUser;
-
 
 @Service
-public class TaskManagementService implements IUser{
+@Transactional
+public class TaskManagementService {
 
 	@Autowired
-	TaskManagementRepository repository;
+	TaskManagementUserRepository userrepository;
+
+	@Autowired
+	TaskManagementTaskRepository taskrepository;
 	
-	@Override
-	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return repository.findAll();
-	}
-
-	@Override
-	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return repository.findById(id);
-	}
-
-	@Override
-	public void create(User user) {
-		// TODO Auto-generated method stub
-		repository.create(user);
-		
-	}
-
-	@Override
-	public void delete(int id) {
-		repository.delete(id);
+	
+	public User findUserById(long id) {
+		return userrepository.getOne(id);
 	}
 	
+	public List<User> findUserByName(String name) {
+		return null;
+	}
 
+	public Task findTaskById(long id) {
+		return taskrepository.getOne(id);
+	}
+	
+	public void saveTask(Task task) {
+		taskrepository.save(task);
+
+	}
+	
+	public void saveUser(User user) {
+		userrepository.save(user);
+	}
+	
+	
+	
+
+	
+	
 }

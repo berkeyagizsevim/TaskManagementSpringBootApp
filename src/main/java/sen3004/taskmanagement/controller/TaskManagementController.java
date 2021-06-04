@@ -25,8 +25,6 @@ public class TaskManagementController {
 	
 	@Autowired
 	TaskManagementService service;
-	
-	// Login Page Controller 
 
 	@RequestMapping(value = { "/login", "login.html" }, method = RequestMethod.GET)
 	public ModelAndView displayLoginPage() {
@@ -62,6 +60,7 @@ public class TaskManagementController {
 	public ModelAndView displaySignUpPage() {
 		ModelAndView mv = new ModelAndView("sign-up");
 		mv.addObject("signupData", new User());
+		
 
 		return mv;
 	}
@@ -76,23 +75,13 @@ public class TaskManagementController {
 			mv.setViewName("sign-up");
 		}else {
 			mv.setViewName("welcome");
-			service.create(signupData);
+			service.saveUser(signupData);
 			//mv.addObject("persons", service.findAll();)
 			//user fills form, after validation we create instance of a project.
 		}
 
 		return mv;
 	}
-	
-	@RequestMapping(value="/delete{id}", method = RequestMethod.GET)
-	public ModelAndView delete(@PathVariable int id) {
-		ModelAndView mv = new ModelAndView("person-list");
-		service.delete(id);
-		mv.addObject("persons", service.findAll());
-		return mv; 
-	}
-	
-	
 	
 
 

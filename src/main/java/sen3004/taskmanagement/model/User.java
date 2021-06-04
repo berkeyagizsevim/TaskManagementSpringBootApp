@@ -1,31 +1,52 @@
 package sen3004.taskmanagement.model;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.validation.constraints.*;
 
+import org.hibernate.annotations.GeneratorType;
 import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 
-public class User {
+
+
+@Entity
+@Table(name="user")
+public class User  {
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@NotEmpty
+	@Column(name="fullname")
 	private String fullName; 
 	
 	@NotEmpty
+	@Column(name="email")
 	private String email; 
 	
 	@NotEmpty
+	@Column(name="password")
 	private String password;
 	
 	@NotEmpty
+	@Column(name="phonenumber")
 	private String phoneNumber; 
 	
 	@NotNull
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dateOfBirth;
+	@Column(name="dateofbirth")
+	private LocalDate dateOfBirth;	
+	
+	@ManyToMany
+	@JoinTable(name = "assignedtasks", 
+					joinColumns = @JoinColumn(name = "uid"), 
+					inverseJoinColumns = @JoinColumn(name="tid"))
+	@OrderBy(value ="id")
+	private Set<Task> tasks = new HashSet<>();
 	
 	
 	public int getId() {
@@ -34,7 +55,6 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 	
 	public String getFullName() {
 		return fullName;
@@ -66,6 +86,14 @@ public class User {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
+	
 	
 		
 
